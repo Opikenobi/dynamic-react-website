@@ -1,0 +1,7 @@
+User-agent: *
+
+# Disallow crawling of any API routes
+Disallow: /api/
+
+# Allow crawling of everything else
+Allow: /

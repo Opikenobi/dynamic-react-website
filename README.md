@@ -52,6 +52,8 @@ npm install -g pm2
 pm2 start npm --name "dynamic-react-website" -- start
 ```
 
+Make sure to run `npm run build` after every change you've made to the website and restart the application with `pm2 restart npm "dynamic-react-website"`
+
 As a webproxy I'm using nginx to provide SSL-Encryption. There are enough walktroughs here, so I won't get into much detail regarding that.
 
 ## Directory Structure
@@ -112,13 +114,126 @@ To populate the Contents of `Blog & TIL` go into the folder `blog` or `til` resp
 
 ## Changing the Navbar or the Layout
 
-The Navbar can be changed under `/pages/components/Navbar.js` here you can add or remove Pages. Make sure to add/delteroutes and dynamic routes accordingly.
+The Navbar can be changed under `/pages/components/Navbar.js` here you can add or remove Pages. Make sure to add/delete routes and dynamic routes accordingly.
 
 The Title of the page can be changed under `/pages/components/Layout.js`
 
 
 ---
 # About the Code
+
+## Layout and Navbar
+
+The Layout is defined inside of Layout.js we make sure that the content box below the navbar is at least as wide as the navbar itself to have some kind of responsiveness and ensure it always looks good. The box below the navbar is called content box. It holds all the written content I want to have on my website.
+
+```javascript
+import { useState, useEffect } from 'react';
+import Navbar from './Navbar';
+
+const Layout = ({ children, pageTitle }) => {
+  const [navbarWidth, setNavbarWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setNavbarWidth(document.querySelector('nav').offsetWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return (
+    <div>
+      <header>
+      <h3>Your Website</h3>
+      </header>
+      <Navbar onWidthChange={setNavbarWidth} />
+      <div className="content">
+        <div className="content-box" style={{ minWidth: navbarWidth }}>
+          {children}
+        </div>
+      </div>
+      <footer>
+        &copy; {new Date().getFullYear()} This website has been built by Yannick Chairi | Chairi.IT. All rights reserved.
+      </footer>
+    </div>
+  );
+};
+
+export default Layout;
+```
+
+Navbar is pretty straight forward. It's a navbar above the content box. If you hover the mouse over one of the links you get a nice box around it popping up to indicate which hyperlink is selected
+
+```javascript
+import { useEffect, useRef } from 'react';
+
+const Navbar = ({ onWidthChange }) => {
+  const navbarRef = useRef(null);
+
+  useEffect(() => {
+    if (navbarRef.current) {
+      onWidthChange(navbarRef.current.offsetWidth);
+    }
+  }, [onWidthChange]);
+
+  return (
+    <nav ref={navbarRef}>
+      <a href="/">Home</a>
+      <a href="/about">About Me</a>
+      <a href="/blog">Blog & Advisories</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  );
+};
+
+export default Navbar;
+```
+
+The highlighting of the selected hyperlink in the navbar is done using CSS. 
+
+```CSS
+nav {
+  background: rgba(0, 0, 0, 0.2); /* Opaque 20% */
+  color: white;
+  padding: 1em;
+  display: flex;
+  justify-content: center; /* Center the navbar horizontally */
+  border-radius: 15px; /* Rounded edges */
+  margin: 20px auto; 
+  width: fit-content;
+  backdrop-filter: blur(5px); /* Create some kind of blurred effect to make it better readable */
+}
+
+nav a {
+  margin: 0 1em;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  padding: 5px 5px; /* Consistent padding */
+  display: inline-block;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+  z-index: -1;
+}
+
+nav a:hover::before {
+  width: calc(100% + 15px);
+  height: calc(100% + 15px);
+  top: -7.5px;
+  left: -7.5px;
+  border-radius: 20px; /* Rounded edges for highlight */
+}
+```
 
 ## Parsing Markdown Files
 
