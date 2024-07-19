@@ -1,5 +1,9 @@
 # Building a responsive Website with Next.js
 
+---
+
+You can visit my own instance of this website under https://www.chairi.it
+
 ## Introduction
 
 I've never been that much into Webdevelopment, I know how to build stuff, I know a few Frameworks, but I still was working strongly with PHP and never touched more modern approaches like React and Next.js respectively. But due to the fact that Websites are the frontface of the internet, I decided it is time to get into the magical world of React.js and build my Website around it. I'm still a complete noob with CSS so many of the stuff I did in CSS is powered by ChatGPT, so please don't sue me. 
@@ -14,16 +18,16 @@ This website consists of various sections
 
 ## Project Setup
 
-First, let's create a new Next.js project. Open your terminal and run:
+First, let's clone this github project. Open your terminal and run:
 
 ```bash
-npx create-next-app my-website
-cd my-website
+git clone https://github.com/Opikenobi/dynamic-react-website.git
+cd dynamic-react-website
 ```
 
-And install all the required packages
+And install all the required packages and dependencies
 ```bash
-npm install fs path remark remark-html remark-parse rehype rehype-highlight rehype-raw remark-gfm unified
+npm install fs next path react react-dom remark remark-html remark-parse rehype rehype-highlight rehype-raw remark-gfm unified
 ```
 
 But what are these packages for you'd ask?
@@ -32,6 +36,23 @@ But what are these packages for you'd ask?
 - `remark-*` enables us to parse Markdown files
 - `rehype-*` gives us syntax highlighting 
 - `unified` enables us to use remark and rehype together!
+
+## Build and start the website
+
+After all dependencies have been installed build the webapplication using
+
+```bash
+npm run build
+```
+
+To ensure that the app automatically restarts when it crashes I'm usuing `pm2`
+
+```bash
+npm install -g pm2
+pm2 start npm --name "dynamic-react-website" -- start
+```
+
+As a webproxy I'm using nginx to provide SSL-Encryption. There are enough walktroughs here, so I won't get into much detail regarding that.
 
 ## Directory Structure
 Here's an overview of the project structure:
