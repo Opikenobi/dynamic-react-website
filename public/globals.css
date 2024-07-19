@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
 body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
@@ -9,6 +17,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 header {
@@ -80,19 +90,40 @@ nav a:hover::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: fit-content;
-  max-width: 100%;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: -5px;
+  width: 100%; /* Ensure the content takes the full width */
+  box-sizing: border-box;
+  max-width: 100%; /* Ensure max width does not exceed viewport */
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
-/* General markdown styles */
-.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+.content-box {
+  padding: 15px;
+  margin: -5px auto;
+  border-radius: 15px;
+  width: 100%; /* Ensure the content box takes full width */
+  max-width: 100%; /* Ensure max width does not exceed viewport */
+  backdrop-filter: blur(5px); /* Makes the navbar opaque */
+  box-sizing: border-box;
+}
+
+.content h2, .content h4, .content h5, .content h6 {
   font-family: 'Quicksand', sans-serif;
   color: #fff;
   margin-top: 0.4em;
-  margin-bottom: -0.6em;
+  margin-bottom: 0.5em;
+}
+
+.content h1 {
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+}
+
+.content h3 {
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+  margin-top: 0.4em;
+  margin-left: -0.0em;
+  margin-bottom: -0.2em;
 }
 
 .content p {
@@ -103,9 +134,9 @@ nav a:hover::before {
 }
 
 .content a {
-  color: #0070f3;
+  color: rgb(170, 207, 255);
   text-decoration: none;
-  border-bottom: 1px dotted #0070f3;
+  border-bottom: 1.25px dotted rgb(170, 207, 255);
 }
 
 .content a:hover {
@@ -140,7 +171,7 @@ nav a:hover::before {
 .content hr {
   border: 0;
   border-top: 1px solid #ccc;
-  margin: 2em 0;
+  margin: 1.5em 0;
 }
 
 .content blockquote {
@@ -148,6 +179,16 @@ nav a:hover::before {
   padding: 0.5em 10px;
   border-left: 5px solid #eee;
   color: #666;
+}
+
+/* Floating image styling */
+.content-box img {
+  float: left;
+  margin: 0 20px 20px 0; /* Adjust margin as needed */
+  max-width: 200px; /* Adjust the size as needed */
+  width: 100%; /* Ensure the image is responsive */
+  height: auto;
+  border-radius: 8px; /* Optional: adds rounded corners to the image */
 }
 
 /* Inline code styling */
@@ -169,24 +210,11 @@ nav a:hover::before {
   overflow: auto; /* Enables scrolling */
   border-radius: 10px;
   font-family: 'Courier New', Courier, monospace;
-  
   margin: 15px;
   min-width: 50%;
   width: fit-content;
   white-space: pre; /* Preserves whitespace and line breaks */
   overflow-x: auto; /* Enables horizontal scrolling */
-
-  
-}
-
-.content-box {
-  
-  padding: 15px;
-  margin: -5px auto;
-  border-radius: 15px;
-  min-width: fit-content;
-  max-width: 100%;
-  backdrop-filter: blur(5px); /* Makes the navbar opaque */
 }
 
 footer {
@@ -234,11 +262,13 @@ footer {
   }
 
   nav {
-    width: 90%;
+    width: 100%;
     margin: 10px auto;
   }
 
   .content-box {
-    width: 90%; /* Ensure content box width adjusts on smaller screens */
+    width: 95%; /* Increase width on smaller screens for better fit */
+    padding: 10px;
+    margin: 0; /* Ensure margin for better spacing */
   }
 }
