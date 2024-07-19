@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  font-weight: 500;
+  font-family: 'Quicksand', sans-serif;
+  margin: 40px 0 0 30px;  /* Add margin to the top and left */
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+}
+
+nav {
+  background: rgba(0, 0, 0, 0.2); /* Opaque 50% */
+  color: white;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  border-radius: 15px; /* Rounded edges */
+  margin: 20px auto; /* Center the navbar horizontally */
+  width: fit-content;
+  backdrop-filter: blur(5px); /* Makes the navbar opaque */
+}
+
+nav a {
+  margin: 0 1em;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  padding: 5px 5px; /* Consistent padding */
+  display: inline-block;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+  z-index: -1;
+}
+
+nav a:hover::before {
+  width: calc(100% + 15px);
+  height: calc(100% + 15px);
+  top: -7.5px;
+  left: -7.5px;
+  border-radius: 20px; /* Rounded edges for highlight */
+}
+
+.content {
+  color: white;
+  flex: 1; /* Ensures the content takes up the remaining space */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: fit-content;
+  max-width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: -5px;
+}
+
+/* General markdown styles */
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+  margin-top: 0.4em;
+  margin-bottom: -0.6em;
+}
+
+.content p {
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+.content a {
+  color: #0070f3;
+  text-decoration: none;
+  border-bottom: 1px dotted #0070f3;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+.content ul, .content ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+
+.content ul li, .content ol li {
+  margin-bottom: 0.5em;
+}
+
+.content table {
+  width: auto;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.content th, .content td {
+  padding: 0.75em;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.content th {
+  background-color: rgba(255, 255, 255, 0.15);;
+}
+
+.content hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 2em 0;
+}
+
+.content blockquote {
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  border-left: 5px solid #eee;
+  color: #666;
+}
+
+/* Inline code styling */
+.content-box code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgba(0, 0, 0, 0.25); /* Light grey background */
+  color: #fff; /* Dark red color for the code */
+  padding: 0.3em 0.5em;
+  border-radius: 10px;
+  white-space: pre-wrap; /* Ensures long lines break to fit within the box */
+  max-width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling if needed */
+}
+
+/* Block code styling */
+.content-box pre {
+  background-color: rgba(0, 0, 0, 0.25); /* Opaque 50% */
+  padding: 0.5em;
+  overflow: auto; /* Enables scrolling */
+  border-radius: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  
+  margin: 15px;
+  min-width: 50%;
+  width: fit-content;
+  white-space: pre; /* Preserves whitespace and line breaks */
+  overflow-x: auto; /* Enables horizontal scrolling */
+
+  
+}
+
+.content-box {
+  
+  padding: 15px;
+  margin: -5px auto;
+  border-radius: 15px;
+  min-width: fit-content;
+  max-width: 100%;
+  backdrop-filter: blur(5px); /* Makes the navbar opaque */
+}
+
+footer {
+  color: white;
+  text-align: center;
+  padding: 1em;
+  border-radius: 15px;
+  margin: 20px auto;
+  width: fit-content;
+}
+
+/* Blog, TIL, and Advisory List Styles */
+.blog-list, .til-list, .advisory-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.blog-list li, .til-list li, .advisory-list li {
+  margin-bottom: 1em;
+}
+
+.blog-list a, .til-list a, .advisory-list a {
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.blog-list a:hover, .til-list a:hover, .advisory-list a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    justify-content: center;
+  }
+
+  h3 {
+    margin: 10px 0 0 10px; /* Adjust margin for smaller screens */
+  }
+
+  .content {
+    margin: 0;
+    align-items: center;
+  }
+
+  nav {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .content-box {
+    width: 90%; /* Ensure content box width adjusts on smaller screens */
+  }
+}
