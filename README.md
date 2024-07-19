@@ -336,11 +336,3 @@ export default Blog;
 ## Conclusion
 
 React.js is a pretty powerful framework for Webdevelopment. I built this page with my rudimentary knowledge in Javascript from scratch (with a little help from ChatGPT and Stackoverflow) in more or less 1 1/2 days which is pretty fast in my opinion. Im sure there are potentials to refactor and optimize stuff. And I'm sure that will be something I will do in the future but not now.
-
-## Additonal Sources
-
-The general CSS file: [globals.css ](../globals.css)
-
-CSS for syntax highlighting: [highlight.css ](../highlight.css)
-
-[Github Repository (ToDo)]()
