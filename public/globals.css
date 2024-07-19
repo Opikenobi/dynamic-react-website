@@ -203,24 +203,23 @@ nav a:hover::before {
 .content-box code {
   font-family: 'Courier New', Courier, monospace;
   background-color: rgba(0, 0, 0, 0.25); /* Light grey background */
-  color: #fff; /* Dark red color for the code */
+  color: #fff;
   padding: 0.3em 0.5em;
   border-radius: 10px;
-  white-space: pre-wrap; /* Ensures long lines break to fit within the box */
-  max-width: 100%;
+  width: 100%;
+  white-space: pre; /* Preserves whitespace and line breaks */
   overflow-x: auto; /* Enables horizontal scrolling if needed */
 }
 
 /* Block code styling */
 .content-box pre {
-  background-color: rgba(0, 0, 0, 0.25); /* Opaque 50% */
-  padding: 0.5em;
-  overflow: auto; /* Enables scrolling */
-  border-radius: 10px;
   font-family: 'Courier New', Courier, monospace;
+  background-color: rgba(0, 0, 0, 0.25); /* Light grey background */
+  padding: 0.5em;
+  border-radius: 10px;
   margin: 15px;
+  width: 100%;
   min-width: 50%;
-  width: fit-content;
   white-space: pre; /* Preserves whitespace and line breaks */
   overflow-x: auto; /* Enables horizontal scrolling */
 }
