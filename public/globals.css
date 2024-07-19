@@ -280,4 +280,13 @@ footer {
     padding: 10px;
     margin: 0; /* Ensure margin for better spacing */
   }
+
+   /* Floating image styling */
+   .content-box img {
+    float: none; /* Remove float */
+    display: block; /* Make the image a block element */
+    margin: 0 auto 20px; /* Center the image and add bottom margin */
+    width: 100%; /* Make the image take the full width */
+    max-width: 100%; /* Ensure the image does not exceed the container width */
+  }
 }
