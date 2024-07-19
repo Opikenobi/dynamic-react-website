@@ -1,5 +1,4 @@
 # Building a responsive Website with Next.js
-2024-07-19
 
 ## Introduction
 
